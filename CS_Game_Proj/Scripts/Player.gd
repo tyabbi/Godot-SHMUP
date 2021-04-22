@@ -22,11 +22,20 @@ func _physics_process(delta):
 func _process(delta):
 	if Input.is_action_pressed("shoot"):
 		shoot()
-	if Input.is_action_pressed("dash"):
-		dash()
+	if Input.is_action_just_pressed("dash"):
+		dash(delta)
 		
 func shoot():
 	pass
 	
-func dash():
-	pass
+func dash(delta):
+	var move_vec = Vector2()
+	if Input.is_action_pressed("move_left"):
+		move_vec.x -= 25
+	if Input.is_action_pressed("move_right"):
+		move_vec.x += 25
+	if Input.is_action_pressed("move_down"):
+		move_vec.y += 25
+	if Input.is_action_pressed("move_up"):
+		move_vec.y -= 25
+	move_and_collide(move_vec * delta * MOVE_SPEED)
