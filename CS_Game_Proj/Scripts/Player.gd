@@ -1,9 +1,6 @@
-extends Node2D
+extends KinematicBody2D
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-
+const MOVE_SPEED = 150
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -16,9 +13,10 @@ func _physics_process(delta):
 	if Input.is_action_pressed("move_right"):
 		move_vec.x += 1
 	if Input.is_action_pressed("move_down"):
-		move_vec.y -= 1
-	if Input.is_action_pressed("move_up"):
 		move_vec.y += 1
+	if Input.is_action_pressed("move_up"):
+		move_vec.y -= 1
+	move_and_collide(move_vec * delta * MOVE_SPEED)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

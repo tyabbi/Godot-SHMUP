@@ -39,7 +39,8 @@ animations = [ {
 [sub_resource type="RectangleShape2D" id=7]
 extents = Vector2( 10, 16.6685 )
 
-[node name="Player" type="Node2D"]
+[node name="KinematicBody2D" type="KinematicBody2D"]
+position = Vector2( 300, 600 )
 script = ExtResource( 2 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
