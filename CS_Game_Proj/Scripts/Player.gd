@@ -1,5 +1,7 @@
 extends KinematicBody2D
 
+var label = "PLAYER"
+var health = 5
 const MOVE_SPEED = 150
 
 # Called when the node enters the scene tree for the first time.
@@ -24,6 +26,9 @@ func _process(delta):
 		shoot()
 	if Input.is_action_just_pressed("dash"):
 		dash(delta)
+	if (health <= 0):
+		get_parent().remove_child(self)
+		queue_free()
 		
 func shoot():
 	pass
