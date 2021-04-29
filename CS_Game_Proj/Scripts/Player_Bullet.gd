@@ -7,6 +7,7 @@ var dir = Vector2(0, 1)
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$RayCast2D.add_exception(StaticBody2D)
+	get_node("VisibilityNotifier2D").connect("screen_exited", self, "_on_screen_exit") 
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
@@ -22,3 +23,6 @@ func _process(_delta):
 				#damage value
 				collide.health -= 1
 			print(collide.health)
+
+func _on_screen_exit():
+	queue_free()

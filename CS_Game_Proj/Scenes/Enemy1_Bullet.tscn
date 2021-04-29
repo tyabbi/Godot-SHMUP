@@ -14,3 +14,5 @@ texture = ExtResource( 1 )
 position = Vector2( 0, -13 )
 scale = Vector2( 1, 0.47 )
 enabled = true
+
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
