@@ -15,15 +15,31 @@ var move_vec = Vector2(MOVE_SPEED, 0)
 func _ready():
 	$Timer.set_wait_time(bullet_delay)
 	$Timer.start()
+	
+	var target = Vector2(self.position.x, self.position.y + 100)
+	$Move_Tween.interpolate_property(self, "position", position, target, 1, Tween.TRANS_QUINT, Tween.EASE_OUT)
+	$Move_Tween.start()
 
-func _process(_delta):
-	var collision = move_and_collide(move_vec * _delta)
+func _process(delta):
+	var collision = move_and_collide(move_vec * delta)
 	if collision:
 		move_vec = move_vec.bounce(collision.normal)
 	
 	if (health <= 0):
 		get_parent().remove_child(self)
 		queue_free()
+		
+	position.y += 40 * delta
+	
+	if ($RayCast2D.is_colliding()):
+		var collide = $RayCast2D.get_collider()
+		if (collide.label == "PLAYER"):
+			#teleport enemy away from play area upon "death"
+			position += Vector2(2000,2000)
+			if (collide.health > 0):
+				#damage value
+				collide.health -= 1
+			print(collide.health)
 
 func shoot():
 	var b = bullet_scene.instance()

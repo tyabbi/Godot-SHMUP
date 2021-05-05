@@ -5,7 +5,7 @@ extends Node2D
 # var a = 2
 # var b = "text"
 
-var label = "ENEMY1BULLET"
+var label = "ENEMYBULLET"
 var dir = Vector2(0, 1)
 
 # Called when the node enters the scene tree for the first time.
