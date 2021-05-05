@@ -17,7 +17,6 @@ _global_script_class_icons={
 
 config/name="Cs Game Proj"
 run/main_scene="res://Scenes/main_screen.tscn"
-config/icon="res://icon.png"
 
 [display]
 

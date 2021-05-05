@@ -31,7 +31,7 @@ func _process(delta):
 		
 	position.y += 40 * delta
 	
-	if ($RayCast2D.is_colliding()):
+	if ($RayCast2D.is_colliding()) :
 		var collide = $RayCast2D.get_collider()
 		if (collide.label == "PLAYER"):
 			#teleport enemy away from play area upon "death"
