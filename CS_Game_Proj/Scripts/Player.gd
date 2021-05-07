@@ -47,6 +47,8 @@ func on_dash_timeout_complete():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	get_node("/root/Main-Game/Health").set_text(str(health))
+	
 	if (Input.is_action_pressed("shoot") && can_shoot):
 		shoot()
 		can_shoot = false

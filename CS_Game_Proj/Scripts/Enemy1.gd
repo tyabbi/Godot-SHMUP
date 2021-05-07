@@ -29,7 +29,7 @@ func _process(delta):
 		get_parent().remove_child(self)
 		queue_free()
 		
-	position.y += 40 * delta
+	position.y += 20 * delta
 	
 	if ($RayCast2D.is_colliding()) :
 		var collide = $RayCast2D.get_collider()

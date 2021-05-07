@@ -35,3 +35,16 @@ shape = SubResource( 1 )
 [node name="EnemySpawn" type="Node2D" parent="."]
 position = Vector2( 300, -60 )
 script = ExtResource( 6 )
+
+[node name="Timer" type="Timer" parent="EnemySpawn"]
+
+[node name="Health" type="Label" parent="."]
+margin_right = 600.0
+margin_bottom = 800.0
+size_flags_vertical = 1
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="timeout" from="EnemySpawn/Timer" to="EnemySpawn" method="_on_Timer_timeout"]

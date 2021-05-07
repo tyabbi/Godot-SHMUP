@@ -6,13 +6,17 @@ var label = "ENEMY"
 # var b = "text"
 var bullet_scene = load("res://Scenes/Boss_Bullet.tscn")
 
-var health = 5
+var health = 25
 const MOVE_SPEED = 150
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$Timer.set_wait_time(0.2)
 	$Timer.start()
+	
+	var target = Vector2(self.position.x, self.position.y + 100)
+	$Tween.interpolate_property(self, "position", position, target, 1, Tween.TRANS_QUINT, Tween.EASE_OUT)
+	$Tween.start()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
