@@ -67,7 +67,7 @@ func shoot():
 	var b = bullet_scene.instance()
 	b.position = self.position
 	b.rotation = self.rotation
-	b.dir = Vector2(0, -5)
+	b.dir = Vector2(0, -10)
 	get_parent().add_child(b) 
 	
 func dash(delta):

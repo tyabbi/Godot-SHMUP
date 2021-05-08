@@ -10,13 +10,12 @@ config_version=4
 
 _global_script_classes=[  ]
 _global_script_class_icons={
-
 }
 
 [application]
 
 config/name="Cs Game Proj"
-run/main_scene="res://Scenes/main_screen.tscn"
+run/main_scene="res://Scenes/Title_Screen.tscn"
 
 [display]
 

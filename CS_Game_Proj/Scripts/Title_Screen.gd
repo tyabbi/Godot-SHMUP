@@ -9,6 +9,7 @@ func _ready():
 
 func _on_button_pressed(scene_to_load):
 	scene_path_to_load = scene_to_load
+	get_tree().change_scene(scene_path_to_load)
 	#$Fade_In.show()
 	#$Fade_In.fade_in()
 

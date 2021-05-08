@@ -11,7 +11,7 @@ const MOVE_SPEED = 150
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$Timer.set_wait_time(0.2)
+	$Timer.set_wait_time(0.05)
 	$Timer.start()
 	
 	var target = Vector2(self.position.x, self.position.y + 100)
@@ -30,22 +30,22 @@ func spawn_bullets():
 	var b1 = bullet_scene.instance()
 	b1.position = self.position
 	b1.rotation = self.rotation
-	b1.dir = Vector2(1, 0)
+	b1.dir = Vector2(5, 0)
 	
 	var b2 = bullet_scene.instance()
 	b2.position = self.position
 	b2.rotation = self.rotation
-	b2.dir = Vector2(0, 1)
+	b2.dir = Vector2(0, 5)
 	
 	var b3 = bullet_scene.instance()
 	b3.position = self.position
 	b3.rotation = self.rotation
-	b3.dir = Vector2(-1, 0)
+	b3.dir = Vector2(-5, 0)
 	
 	var b4 = bullet_scene.instance()
 	b4.position = self.position
 	b4.rotation = self.rotation
-	b4.dir = Vector2(0, -1)
+	b4.dir = Vector2(0, -5)
 	
 	get_parent().add_child(b1)
 	get_parent().add_child(b2)
