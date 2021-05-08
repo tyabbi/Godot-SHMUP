@@ -46,5 +46,4 @@ align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
 [connection signal="timeout" from="EnemySpawn/Timer" to="EnemySpawn" method="_on_Timer_timeout"]

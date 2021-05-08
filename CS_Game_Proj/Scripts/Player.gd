@@ -30,13 +30,13 @@ func _ready():
 func _physics_process(delta):
 	var move_vec = Vector2()
 	if Input.is_action_pressed("move_left"):
-		move_vec.x -= 1
+		move_vec.x -= 2
 	if Input.is_action_pressed("move_right"):
-		move_vec.x += 1
+		move_vec.x += 2
 	if Input.is_action_pressed("move_down"):
-		move_vec.y += 1
+		move_vec.y += 1.5
 	if Input.is_action_pressed("move_up"):
-		move_vec.y -= 1
+		move_vec.y -= 1.5
 	move_and_collide(move_vec * delta * MOVE_SPEED)
 
 func on_shoot_timeout_complete():
