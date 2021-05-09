@@ -9,6 +9,9 @@ var bullet_delay = 0.2
 var dash_delay = 2
 const MOVE_SPEED = 150
 
+var double_shot = false
+var spread_shot = false
+
 var can_shoot = true
 var can_dash = true
 
@@ -64,11 +67,45 @@ func _process(delta):
 		queue_free()
 		
 func shoot():
-	var b = bullet_scene.instance()
-	b.position = self.position
-	b.rotation = self.rotation
-	b.dir = Vector2(0, -10)
-	get_parent().add_child(b) 
+	if(double_shot == true):
+		var b1 = bullet_scene.instance()
+		var b2 = bullet_scene.instance()
+		
+		b1.position.x = self.position.x - 6
+		b1.position.y = self.position.y
+		b1.rotation = self.rotation
+		b2.position.x = self.position.x + 6
+		b2.rotation = self.rotation
+		b2.position.y = self.position.y
+		b1.dir = Vector2(0, -10)
+		b2.dir = Vector2(0, -10)
+		
+		get_parent().add_child(b1) 
+		get_parent().add_child(b2) 
+	elif(spread_shot == true):
+		var b1 = bullet_scene.instance()
+		var b2 = bullet_scene.instance()
+		var b3 = bullet_scene.instance()
+		
+		b1.position = self.position
+		b1.rotation = self.rotation - 25
+		b2.position = self.position
+		b2.rotation = self.rotation
+		b3.position = self.position
+		b3.rotation = self.rotation + 25
+		b1.dir = Vector2(0, -10)
+		b2.dir = Vector2(0, -10)
+		b3.dir = Vector2(0, -10)
+		
+		get_parent().add_child(b1) 
+		get_parent().add_child(b2) 
+		get_parent().add_child(b3)
+	else:
+		var b = bullet_scene.instance()
+		b.position = self.position
+		b.rotation = self.rotation
+		b.dir = Vector2(0, -10)
+		get_parent().add_child(b) 
 	
 func dash(delta):
 	var move_vec = Vector2()

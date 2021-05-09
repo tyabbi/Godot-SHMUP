@@ -5,6 +5,7 @@ extends KinematicBody2D
 # var a = 2
 # var b = "text"
 var bullet_scene = load("res://Scenes/Enemy1_Bullet.tscn")
+var power_scene = load("res://Scenes/Powerup.tscn")
 var bullet_delay = 0.5
 var health = 1
 var label = "ENEMY"
@@ -26,6 +27,11 @@ func _process(delta):
 		move_vec = move_vec.bounce(collision.normal)
 	
 	if (health <= 0):
+		var p = power_scene.instance()
+		p.position = self.position
+		p.dir = Vector2(0, 5)
+		get_parent().add_child(p)
+		
 		get_parent().remove_child(self)
 		queue_free()
 		
