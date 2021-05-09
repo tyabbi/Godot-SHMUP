@@ -12,6 +12,8 @@ const MOVE_SPEED = 150
 var double_shot = false
 var spread_shot = false
 
+var power_timer = null
+
 var can_shoot = true
 var can_dash = true
 
@@ -43,10 +45,14 @@ func _physics_process(delta):
 	move_and_collide(move_vec * delta * MOVE_SPEED)
 
 func on_shoot_timeout_complete():
-	can_shoot = true;
+	can_shoot = true
 	
 func on_dash_timeout_complete():
-	can_dash = true;
+	can_dash = true
+
+func _on_power_timeout_complete():
+	double_shot = false
+	spread_shot = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
