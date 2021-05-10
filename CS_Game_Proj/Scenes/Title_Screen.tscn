@@ -51,5 +51,4 @@ margin_bottom = 50.0
 
 [node name="Fade_In" parent="." instance=ExtResource( 4 )]
 visible = false
-
 [connection signal="fade_finished" from="Fade_In" to="." method="_on_Fade_In_fade_finished"]

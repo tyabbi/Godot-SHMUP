@@ -1,10 +1,10 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://Scripts/Enemy2Spawn.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=2]
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/StaticBody2D.gd" type="Script" id=4]
 [ext_resource path="res://Scripts/Enemy1Spawn.gd" type="Script" id=6]
+
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 10, 404.978 )
@@ -33,15 +33,11 @@ shape = SubResource( 1 )
 position = Vector2( 610, 400 )
 shape = SubResource( 1 )
 
-[node name="Enemy1Spawn" type="Node2D" parent="."]
+[node name="EnemySpawn" type="Node2D" parent="."]
+position = Vector2( 300, -60 )
 script = ExtResource( 6 )
 
-[node name="Timer" type="Timer" parent="Enemy1Spawn"]
-
-[node name="Enemy2Spawn" type="Node2D" parent="."]
-script = ExtResource( 1 )
-
-[node name="Timer" type="Timer" parent="Enemy2Spawn"]
+[node name="Timer" type="Timer" parent="EnemySpawn"]
 
 [node name="Health" type="Label" parent="."]
 margin_right = 600.0
@@ -51,5 +47,4 @@ align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
-[connection signal="timeout" from="Enemy1Spawn/Timer" to="Enemy1Spawn" method="_on_Timer_timeout"]
-[connection signal="timeout" from="Enemy2Spawn/Timer" to="Enemy2Spawn" method="_on_Timer_timeout"]
+[connection signal="timeout" from="EnemySpawn/Timer" to="EnemySpawn" method="_on_Timer_timeout"]

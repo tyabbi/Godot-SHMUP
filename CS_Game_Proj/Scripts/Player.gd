@@ -4,7 +4,7 @@ var label = "PLAYER"
 var shoot_timer = null
 var dash_timer = null
 
-var health = 5
+var health = 1000
 var bullet_delay = 0.2
 var dash_delay = 2
 const MOVE_SPEED = 150
