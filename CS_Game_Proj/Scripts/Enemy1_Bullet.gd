@@ -26,7 +26,6 @@ func _process(_delta):
 			if (collide.health > 0):
 				#damage value
 				collide.health -= 1
-			print(collide.health)
 
 func _on_screen_exit():
 	queue_free()

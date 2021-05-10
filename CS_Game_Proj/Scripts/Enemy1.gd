@@ -56,7 +56,6 @@ func _process(delta):
 			if (collide.health > 0):
 				#damage value
 				collide.health -= 1
-			print(collide.health)
 
 func shoot():
 	var b = bullet_scene.instance()

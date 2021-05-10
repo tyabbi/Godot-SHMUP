@@ -17,4 +17,3 @@ func _process(_delta):
 			position += Vector2(2000,2000)
 			if (collide.health > 0):
 				collide.health -= 1
-			print(collide.health)

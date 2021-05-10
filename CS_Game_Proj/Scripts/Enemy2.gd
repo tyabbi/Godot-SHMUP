@@ -29,6 +29,17 @@ func _process(delta):
 	#	move_vec = move_vec.bounce(collision.normal)
 	
 	if (health <= 0):
+		#update counter in Enemy2Spawn
+		if (get_parent().get_parent().get_node("Enemy2Spawn").colTag == "col1"):
+			print("col1 defeated")
+			get_parent().get_parent().get_node("Enemy2Spawn").col1 -= 1
+		if (get_parent().get_parent().get_node("Enemy2Spawn").colTag == "col2"):
+			print("col2 defeated")
+			get_parent().get_parent().get_node("Enemy2Spawn").col2 -= 1
+		if (get_parent().get_parent().get_node("Enemy2Spawn").colTag == "col3"):
+			print("col3 defeated")
+			get_parent().get_parent().get_node("Enemy2Spawn").col3 -= 1
+		
 		randomize()
 		
 		var p
@@ -50,12 +61,12 @@ func _process(delta):
 	if ($RayCast2D.is_colliding()) :
 		var collide = $RayCast2D.get_collider()
 		if (collide.label == "PLAYER"):
+			
 			#teleport enemy away from play area upon "death"
 			position += Vector2(2000,2000)
 			if (collide.health > 0):
 				#damage value
 				collide.health -= 1
-			print(collide.health)
 
 func shoot():
 	var b = bullet_scene.instance()
