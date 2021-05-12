@@ -7,6 +7,8 @@
 extents = Vector2( 10.7399, 11.1232 )
 
 [node name="Enemy2" type="KinematicBody2D"]
+collision_layer = 2
+collision_mask = 5
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
@@ -21,8 +23,29 @@ shape = SubResource( 1 )
 [node name="Move_Tween" type="Tween" parent="."]
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
-position = Vector2( 0, -12.1894 )
-scale = Vector2( 13.2068, 0.47798 )
+rotation = 0.785398
 enabled = true
-cast_to = Vector2( 0, 46 )
+cast_to = Vector2( 0, 27 )
+collide_with_areas = true
+
+[node name="RayCast2D2" type="RayCast2D" parent="."]
+rotation = -0.785398
+enabled = true
+cast_to = Vector2( 0, 27 )
+collide_with_areas = true
+
+[node name="RayCast2D3" type="RayCast2D" parent="."]
+rotation = 2.35619
+scale = Vector2( 1, 1 )
+enabled = true
+cast_to = Vector2( 0, 27 )
+collide_with_areas = true
+
+[node name="RayCast2D4" type="RayCast2D" parent="."]
+rotation = 3.92699
+scale = Vector2( 1, 1 )
+enabled = true
+cast_to = Vector2( 0, 27 )
+collide_with_areas = true
+
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

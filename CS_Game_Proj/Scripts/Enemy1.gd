@@ -9,7 +9,7 @@ var spread_power_scene = load("res://Scenes/Spread_Powerup.tscn")
 var double_power_scene = load("res://Scenes/Double_Powerup.tscn")
 var bullet_delay = 0.25
 var health = 1
-var label = "ENEMY"
+var label = "ENEMY1"
 const MOVE_SPEED = 150
 var move_vec = Vector2(MOVE_SPEED, 0)
 
@@ -56,7 +56,34 @@ func _process(delta):
 			if (collide.health > 0):
 				#damage value
 				collide.health -= 1
-
+	
+	if ($RayCast2D2.is_colliding()) :
+		var collide = $RayCast2D2.get_collider()
+		if (collide.label == "PLAYER"):
+			#teleport enemy away from play area upon "death"
+			position += Vector2(2000,2000)
+			if (collide.health > 0):
+				#damage value
+				collide.health -= 1
+	
+	if ($RayCast2D3.is_colliding()) :
+		var collide = $RayCast2D3.get_collider()
+		if (collide.label == "PLAYER"):
+			#teleport enemy away from play area upon "death"
+			position += Vector2(2000,2000)
+			if (collide.health > 0):
+				#damage value
+				collide.health -= 1
+	
+	if ($RayCast2D4.is_colliding()) :
+		var collide = $RayCast2D4.get_collider()
+		if (collide.label == "PLAYER"):
+			#teleport enemy away from play area upon "death"
+			position += Vector2(2000,2000)
+			if (collide.health > 0):
+				#damage value
+				collide.health -= 1
+	
 func shoot():
 	var b = bullet_scene.instance()
 	b.position = self.position

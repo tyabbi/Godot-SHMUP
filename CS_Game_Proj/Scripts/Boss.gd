@@ -1,6 +1,6 @@
 extends Node2D
 
-var label = "ENEMY"
+var label = "BOSS"
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"

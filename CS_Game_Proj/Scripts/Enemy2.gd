@@ -7,9 +7,9 @@ extends KinematicBody2D
 var bullet_scene = load("res://Scenes/Enemy2_Bullet.tscn")
 var spread_power_scene = load("res://Scenes/Spread_Powerup.tscn")
 var double_power_scene = load("res://Scenes/Double_Powerup.tscn")
-var bullet_delay = 0.25
+var bullet_delay = 1
 var health = 5
-var label = "ENEMY"
+var label = "ENEMY2"
 const MOVE_SPEED = 150
 #var move_vec = Vector2(MOVE_SPEED, 0)
 onready var player = get_parent().get_parent().get_node("Player")
@@ -29,19 +29,7 @@ func _process(delta):
 	#	move_vec = move_vec.bounce(collision.normal)
 	
 	if (health <= 0):
-		#update counter in Enemy2Spawn
-		if (get_parent().get_parent().get_node("Enemy2Spawn").colTag == "col1"):
-			print("col1 defeated")
-			get_parent().get_parent().get_node("Enemy2Spawn").col1 -= 1
-		if (get_parent().get_parent().get_node("Enemy2Spawn").colTag == "col2"):
-			print("col2 defeated")
-			get_parent().get_parent().get_node("Enemy2Spawn").col2 -= 1
-		if (get_parent().get_parent().get_node("Enemy2Spawn").colTag == "col3"):
-			print("col3 defeated")
-			get_parent().get_parent().get_node("Enemy2Spawn").col3 -= 1
-		
 		randomize()
-		
 		var p
 		var powerup = randi() % 2 + 1
 		if(powerup == 1):
@@ -61,7 +49,33 @@ func _process(delta):
 	if ($RayCast2D.is_colliding()) :
 		var collide = $RayCast2D.get_collider()
 		if (collide.label == "PLAYER"):
-			
+			#teleport enemy away from play area upon "death"
+			position += Vector2(2000,2000)
+			if (collide.health > 0):
+				#damage value
+				collide.health -= 1
+	
+	if ($RayCast2D2.is_colliding()) :
+		var collide = $RayCast2D2.get_collider()
+		if (collide.label == "PLAYER"):
+			#teleport enemy away from play area upon "death"
+			position += Vector2(2000,2000)
+			if (collide.health > 0):
+				#damage value
+				collide.health -= 1
+	
+	if ($RayCast2D3.is_colliding()) :
+		var collide = $RayCast2D3.get_collider()
+		if (collide.label == "PLAYER"):
+			#teleport enemy away from play area upon "death"
+			position += Vector2(2000,2000)
+			if (collide.health > 0):
+				#damage value
+				collide.health -= 1
+	
+	if ($RayCast2D4.is_colliding()) :
+		var collide = $RayCast2D4.get_collider()
+		if (collide.label == "PLAYER"):
 			#teleport enemy away from play area upon "death"
 			position += Vector2(2000,2000)
 			if (collide.health > 0):

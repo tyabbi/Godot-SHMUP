@@ -14,5 +14,6 @@ texture = ExtResource( 1 )
 rotation = 3.92699
 enabled = true
 cast_to = Vector2( 4, 4 )
+collision_mask = 2
 
 [node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]

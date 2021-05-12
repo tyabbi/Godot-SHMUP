@@ -16,7 +16,7 @@ func _process(_delta):
 	
 	if ($RayCast2D.is_colliding()) :
 		var collide = $RayCast2D.get_collider()
-		if (collide.label == "ENEMY"):
+		if (collide.label == "ENEMY1" || collide.label == "ENEMY2" || collide.label == "BOSS"):
 			#teleport enemy away from play area upon "death"
 			position += Vector2(2000,2000)
 			if (collide.health > 0):

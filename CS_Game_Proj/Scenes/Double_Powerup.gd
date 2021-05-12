@@ -21,7 +21,27 @@ func _process(_delta):
 	if ($RayCast2D.is_colliding()) :
 		var collide = $RayCast2D.get_collider()
 		if (collide.label == "PLAYER"):
-			#teleport enemy away from play area upon "death"
+			position += Vector2(2000,2000)
+			collide.spread_shot = false
+			collide.double_shot = true
+	
+	if ($RayCast2D2.is_colliding()) :
+		var collide = $RayCast2D2.get_collider()
+		if (collide.label == "PLAYER"):
+			position += Vector2(2000,2000)
+			collide.spread_shot = false
+			collide.double_shot = true
+	
+	if ($RayCast2D3.is_colliding()) :
+		var collide = $RayCast2D3.get_collider()
+		if (collide.label == "PLAYER"):
+			position += Vector2(2000,2000)
+			collide.spread_shot = false
+			collide.double_shot = true
+	
+	if ($RayCast2D4.is_colliding()) :
+		var collide = $RayCast2D4.get_collider()
+		if (collide.label == "PLAYER"):
 			position += Vector2(2000,2000)
 			collide.spread_shot = false
 			collide.double_shot = true
