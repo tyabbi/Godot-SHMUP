@@ -18,6 +18,9 @@ var power_timer = null
 var can_shoot = true
 var can_dash = true
 
+var time_start = 0
+var time_now = 0
+
 var bullet_scene = load("res://Scenes/Player_Bullet.tscn")
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -74,6 +77,17 @@ func _process(delta):
 	if (health <= 0):
 		get_parent().remove_child(self)
 		queue_free()
+		
+	time_now = OS.get_unix_time()
+	var time_elapsed = time_now - time_start
+	
+	if (double_shot == true and time_elapsed == 5):
+		print("double shot timer done")
+		double_shot = false
+	
+	if (spread_shot == true and time_elapsed == 5):
+		print("spread shot timer done")
+		spread_shot = false
 		
 func shoot():
 	if(double_shot == true):
@@ -142,11 +156,11 @@ func _on_Timer_timeout():
 	shoot()
 
 func _on_ghost_timer_timeout():
-		#Makes a copy of the ghost object
-		var this_ghost = preload("res://Scenes/ghost.tscn").instance()
-		
-		#Give ghost a parent
-		get_parent().add_child(this_ghost)
-		this_ghost.position = position
-		this_ghost.texture = $AnimatedSprite.frames.get_frame($AnimatedSprite.animation, $AnimatedSprite.frame)
-		this_ghost.set_scale(Vector2(0.2, 0.2))
+	#Makes a copy of the ghost object
+	var this_ghost = preload("res://Scenes/ghost.tscn").instance()
+	
+	#Give ghost a parent
+	get_parent().add_child(this_ghost)
+	this_ghost.position = position
+	this_ghost.texture = $AnimatedSprite.frames.get_frame($AnimatedSprite.animation, $AnimatedSprite.frame)
+	this_ghost.set_scale(Vector2(0.2, 0.2))

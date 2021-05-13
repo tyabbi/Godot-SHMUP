@@ -24,6 +24,7 @@ func _process(_delta):
 			position += Vector2(2000,2000)
 			collide.double_shot = false
 			collide.spread_shot = true
+			collide.time_start = OS.get_unix_time() #store intial start time
 	
 	if ($RayCast2D2.is_colliding()) :
 		var collide = $RayCast2D2.get_collider()
@@ -31,6 +32,7 @@ func _process(_delta):
 			position += Vector2(2000,2000)
 			collide.double_shot = false
 			collide.spread_shot = true
+			collide.time_start = OS.get_unix_time() #store intial start time
 	
 	if ($RayCast2D3.is_colliding()) :
 		var collide = $RayCast2D3.get_collider()
@@ -38,6 +40,7 @@ func _process(_delta):
 			position += Vector2(2000,2000)
 			collide.double_shot = false
 			collide.spread_shot = true
+			collide.time_start = OS.get_unix_time() #store intial start time
 	
 	if ($RayCast2D4.is_colliding()) :
 		var collide = $RayCast2D4.get_collider()
@@ -45,6 +48,7 @@ func _process(_delta):
 			position += Vector2(2000,2000)
 			collide.double_shot = false
 			collide.spread_shot = true
+			collide.time_start = OS.get_unix_time() #store intial start time
 
 func _on_screen_exit():
 	queue_free()
