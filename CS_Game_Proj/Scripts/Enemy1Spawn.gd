@@ -41,7 +41,7 @@ func _on_Timer_timeout():
 		print("Spawning enemy.")
 		var enemy1 = enemy1_scene.instance()
 		randomize()
-		enemy1.position.x = rand_range(0, 600)
+		enemy1.position.x = rand_range(150, 450)
 		
 		add_child(enemy1)
 		count = count - 1
@@ -50,7 +50,7 @@ func _on_Timer_timeout():
 		print("Spawning enemy.")
 		var enemy1 = enemy1_scene.instance()
 		randomize()
-		enemy1.position.x = rand_range(0, 600)
+		enemy1.position.x = rand_range(150, 450)
 		
 		add_child(enemy1)
 		count = count - 1

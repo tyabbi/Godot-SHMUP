@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Sprites/powerup.png" type="Texture" id=1]
 [ext_resource path="res://Sprites/powerup-frame2.png" type="Texture" id=2]
-[ext_resource path="res://Scenes/Powerup.gd" type="Script" id=3]
+[ext_resource path="res://Scripts/Powerup.gd" type="Script" id=3]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {

@@ -19,7 +19,7 @@ run/main_scene="res://Scenes/Title_Screen.tscn"
 
 [display]
 
-window/size/width=600
+window/size/width=800
 window/size/height=800
 
 [input]

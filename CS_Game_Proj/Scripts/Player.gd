@@ -3,6 +3,7 @@ extends KinematicBody2D
 var label = "PLAYER"
 var shoot_timer = null
 var dash_timer = null
+var ghost_timer = null
 
 var health = 1000
 var bullet_delay = 0.2
@@ -64,8 +65,10 @@ func _process(delta):
 		shoot_timer.start()
 		
 	if (Input.is_action_just_pressed("dash") && can_dash):
-		dash(delta)
+		$ghost_timer.start()
 		can_dash = false
+		dash(delta)
+		$ghost_timer.stop()
 		dash_timer.start()
 		
 	if (health <= 0):
@@ -108,7 +111,8 @@ func shoot():
 		get_parent().add_child(b3)
 	else:
 		var b = bullet_scene.instance()
-		b.position = self.position
+		b.position.x = self.position.x
+		b.position.y = self.position.y - 50
 		b.rotation = self.rotation
 		b.dir = Vector2(0, -10)
 		get_parent().add_child(b) 
@@ -127,3 +131,13 @@ func dash(delta):
 	
 func _on_Timer_timeout():
 	shoot()
+
+func _on_ghost_timer_timeout():
+		#Makes a copy of the ghost object
+		var this_ghost = preload("res://Scenes/ghost.tscn").instance()
+		
+		#Give ghost a parent
+		get_parent().add_child(this_ghost)
+		this_ghost.position = position
+		this_ghost.texture = $AnimatedSprite.frames.get_frame($AnimatedSprite.animation, $AnimatedSprite.frame)
+		this_ghost.set_scale(Vector2(0.2, 0.2))

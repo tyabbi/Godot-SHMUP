@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Eaters - Tatsumaki.mp3-27623b03df89d6d927974cdb2d57ae4f.mp3str"
+
+[deps]
+
+source_file="res://Music, Sounds/Eaters - Tatsumaki.mp3"
+dest_files=[ "res://.import/Eaters - Tatsumaki.mp3-27623b03df89d6d927974cdb2d57ae4f.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
