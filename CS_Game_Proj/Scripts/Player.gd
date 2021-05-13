@@ -77,38 +77,12 @@ func _process(delta):
 		
 func shoot():
 	if(double_shot == true):
-		var b1 = bullet_scene.instance()
-		var b2 = bullet_scene.instance()
+		double_shot()
 		
-		b1.position.x = self.position.x - 6
-		b1.position.y = self.position.y
-		b1.rotation = self.rotation
-		b2.position.x = self.position.x + 6
-		b2.rotation = self.rotation
-		b2.position.y = self.position.y
-		b1.dir = Vector2(0, -10)
-		b2.dir = Vector2(0, -10)
-		
-		get_parent().add_child(b1) 
-		get_parent().add_child(b2) 
 	elif(spread_shot == true):
-		var b1 = bullet_scene.instance()
-		var b2 = bullet_scene.instance()
-		var b3 = bullet_scene.instance()
+		spread_shot()
 		
-		b1.position = self.position
-		b1.rotation = self.rotation - 25
-		b2.position = self.position
-		b2.rotation = self.rotation
-		b3.position = self.position
-		b3.rotation = self.rotation + 25
-		b1.dir = Vector2(0, -10)
-		b2.dir = Vector2(0, -10)
-		b3.dir = Vector2(0, -10)
-		
-		get_parent().add_child(b1) 
-		get_parent().add_child(b2) 
-		get_parent().add_child(b3)
+	#default shot
 	else:
 		var b = bullet_scene.instance()
 		b.position.x = self.position.x
@@ -129,6 +103,41 @@ func dash(delta):
 		move_vec.y -= 25
 	move_and_collide(move_vec * delta * MOVE_SPEED)
 	
+func double_shot():
+	var b1 = bullet_scene.instance()
+	var b2 = bullet_scene.instance()
+	
+	b1.position.x = self.position.x - 6
+	b1.position.y = self.position.y
+	b1.rotation = self.rotation
+	b2.position.x = self.position.x + 6
+	b2.rotation = self.rotation
+	b2.position.y = self.position.y
+	b1.dir = Vector2(0, -10)
+	b2.dir = Vector2(0, -10)
+	
+	get_parent().add_child(b1) 
+	get_parent().add_child(b2)
+		
+func spread_shot():
+	var b1 = bullet_scene.instance()
+	var b2 = bullet_scene.instance()
+	var b3 = bullet_scene.instance()
+	
+	b1.position = self.position
+	b1.rotation = self.rotation - 25
+	b2.position = self.position
+	b2.rotation = self.rotation
+	b3.position = self.position
+	b3.rotation = self.rotation + 25
+	b1.dir = Vector2(0, -10)
+	b2.dir = Vector2(0, -10)
+	b3.dir = Vector2(0, -10)
+	
+	get_parent().add_child(b1) 
+	get_parent().add_child(b2) 
+	get_parent().add_child(b3)
+
 func _on_Timer_timeout():
 	shoot()
 
