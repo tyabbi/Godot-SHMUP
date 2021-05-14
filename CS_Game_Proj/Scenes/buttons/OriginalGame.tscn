@@ -5,4 +5,4 @@
 [node name="OriginalGame" instance=ExtResource( 1 )]
 
 [node name="Label" parent="." index="0"]
-text = "1942 Mode"
+text = "Original Game"
