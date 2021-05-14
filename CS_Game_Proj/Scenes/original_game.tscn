@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/Enemy1Spawn.gd" type="Script" id=2]
@@ -8,7 +8,6 @@
 [ext_resource path="res://Fonts/silkscreen_30.tres" type="DynamicFont" id=6]
 [ext_resource path="res://Scenes/PlayerOG.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Fonts/silkscreen_50.tres" type="DynamicFont" id=8]
-[ext_resource path="res://Music, Sounds/Eaters - Tatsumaki.mp3" type="AudioStream" id=9]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 133.93, 404.978 )
@@ -99,8 +98,6 @@ __meta__ = {
 }
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 9 )
 volume_db = -20.0
 autoplay = true
-
 [connection signal="timeout" from="Enemy1Spawn/Timer" to="Enemy1Spawn" method="_on_Timer_timeout"]

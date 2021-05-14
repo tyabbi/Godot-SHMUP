@@ -35,15 +35,10 @@ custom_fonts/font = SubResource( 1 )
 text = "Runner"
 align = 1
 
-[node name="Center_Row" type="HBoxContainer" parent="menu"]
+[node name="Buttons" type="VBoxContainer" parent="menu"]
 margin_top = 105.0
 margin_right = 600.0
 margin_bottom = 503.0
-size_flags_vertical = 3
-
-[node name="Buttons" type="VBoxContainer" parent="menu/Center_Row"]
-margin_right = 600.0
-margin_bottom = 398.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/separation = 20
@@ -51,12 +46,12 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="OriginalGame" parent="menu/Center_Row/Buttons" instance=ExtResource( 3 )]
+[node name="OriginalGame" parent="menu/Buttons" instance=ExtResource( 3 )]
 margin_bottom = 60.0
 script = ExtResource( 4 )
 scene_to_load = "res://Scenes/original_game.tscn"
 
-[node name="NewGame" parent="menu/Center_Row/Buttons" instance=ExtResource( 1 )]
+[node name="NewGame" parent="menu/Buttons" instance=ExtResource( 1 )]
 margin_top = 80.0
 margin_bottom = 140.0
 scene_to_load = "res://Scenes/main_screen.tscn"
