@@ -7,7 +7,7 @@ var ghost_timer = null
 
 var health = 1000
 var bullet_delay = 0.2
-var dash_delay = 3
+var dash_delay = 2
 const MOVE_SPEED = 150
 
 var double_shot = false
@@ -68,9 +68,10 @@ func _process(delta):
 		shoot_timer.start()
 		
 	if (Input.is_action_just_pressed("dash") && can_dash):
-		$ghost_particles.emitting = true
+		$ghost_timer.start()
 		can_dash = false
 		dash(delta)
+		$ghost_timer.stop()
 		dash_timer.start()
 		
 	if (health <= 0):
@@ -107,13 +108,13 @@ func shoot():
 func dash(delta):
 	var move_vec = Vector2()
 	if Input.is_action_pressed("move_left"):
-		move_vec.x -= 50
+		move_vec.x -= 25
 	if Input.is_action_pressed("move_right"):
-		move_vec.x += 50
+		move_vec.x += 25
 	if Input.is_action_pressed("move_down"):
-		move_vec.y += 50
+		move_vec.y += 25
 	if Input.is_action_pressed("move_up"):
-		move_vec.y -= 50
+		move_vec.y -= 25
 	move_and_collide(move_vec * delta * MOVE_SPEED)
 	
 func double_shot():
