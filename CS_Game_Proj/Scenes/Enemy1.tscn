@@ -41,6 +41,7 @@ shape = SubResource( 1 )
 position = Vector2( 0, -5 )
 scale = Vector2( 0.15, 0.15 )
 frames = SubResource( 5 )
+frame = 1
 playing = true
 
 [node name="Timer" type="Timer" parent="."]
@@ -70,5 +71,4 @@ rotation = 3.92699
 enabled = true
 cast_to = Vector2( 0, 27 )
 collide_with_areas = true
-
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

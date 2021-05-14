@@ -7,6 +7,7 @@ extends KinematicBody2D
 var bullet_scene = load("res://Scenes/Enemy1_Bullet.tscn")
 var spread_power_scene = load("res://Scenes/Spread_Powerup.tscn")
 var double_power_scene = load("res://Scenes/Double_Powerup.tscn")
+var health_scene = load("res://Scenes/Health_Powerup.tscn")
 var bullet_delay = 0.25
 var health = 1
 var label = "ENEMY1"
@@ -31,11 +32,13 @@ func _process(delta):
 		randomize()
 		
 		var p
-		var powerup = randi() % 2 + 1
-		if(powerup == 1):
+		var powerup = randi() % 5 + 1
+		if(powerup == 1 or powerup == 2):
 			p = spread_power_scene.instance()
-		else:
+		elif(powerup == 3 or powerup == 4):
 			p = double_power_scene.instance()
+		else:
+			p = health_scene.instance()
 			
 		var dropRate = randi() % 9
 		if(dropRate == 0):

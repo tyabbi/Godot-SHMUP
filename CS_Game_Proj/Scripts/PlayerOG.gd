@@ -5,7 +5,7 @@ var shoot_timer = null
 var iframe_timer = null
 var ghost_timer = null
 
-var health = 1000
+var health = 5
 var bullet_delay = 0.1
 var iframe_delay = 2
 const MOVE_SPEED = 150
