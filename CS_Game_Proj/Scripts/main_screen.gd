@@ -14,3 +14,5 @@ func _ready():
 func _process(_delta):
 	if (enemy_count == 34):
 		assert(get_tree().change_scene("res://Scenes/final.tscn") == OK)
+	if (get_node("Player").health == 0):
+		assert(get_tree().change_scene("res://Scenes/game_over.tscn") == OK)
