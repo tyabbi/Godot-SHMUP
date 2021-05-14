@@ -121,10 +121,12 @@ func iframe():
 	modulate.a = 0.5
 	$iframe_timer.start();
 	$CollisionShape2D.disabled = true
+	can_shoot = false
 
 func _on_iframe_timer_timeout():
 	modulate.a = 1
 	$CollisionShape2D.disabled = false
+	can_shoot = true
 	
 func double_shot():
 	var b1 = bullet_scene.instance()
