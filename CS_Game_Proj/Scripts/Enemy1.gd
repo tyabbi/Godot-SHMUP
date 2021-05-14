@@ -43,6 +43,9 @@ func _process(delta):
 			p.dir = Vector2(0, 5)
 			get_parent().add_child(p)
 		
+		get_parent().get_parent().get_parent().get_node("Main-Game").enemy_count += 1
+		print(get_parent().get_parent().get_parent().get_node("Main-Game").enemy_count)
+		
 		get_parent().remove_child(self)
 		queue_free()
 		

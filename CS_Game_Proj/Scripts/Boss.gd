@@ -23,6 +23,9 @@ func _process(_delta):
 	rotate(0.05)
 	
 	if (health <= 0):
+		get_parent().get_parent().get_parent().get_node("Main-Game").enemy_count += 1
+		print(get_parent().get_parent().get_parent().get_node("Main-Game").enemy_count)
+				
 		get_parent().remove_child(self)
 		queue_free()
 	

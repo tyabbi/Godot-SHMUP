@@ -60,7 +60,7 @@ func _on_power_timeout_complete():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	get_node("/root/Original-Game/Health").set_text(str(health))
+	get_node("/root/Main-Game/Health").set_text(str(health))
 	
 	if (Input.is_action_just_pressed("shoot") && can_shoot):
 		shoot()
