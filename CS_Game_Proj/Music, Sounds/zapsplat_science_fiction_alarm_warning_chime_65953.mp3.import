@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/zapsplat_science_fiction_alarm_warning_chime_65953.mp3-2cb67d906dd6b5969e06ecde1b4ba9a3.mp3str"
+
+[deps]
+
+source_file="res://Music, Sounds/zapsplat_science_fiction_alarm_warning_chime_65953.mp3"
+dest_files=[ "res://.import/zapsplat_science_fiction_alarm_warning_chime_65953.mp3-2cb67d906dd6b5969e06ecde1b4ba9a3.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

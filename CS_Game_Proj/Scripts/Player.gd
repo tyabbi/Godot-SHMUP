@@ -7,7 +7,7 @@ var ghost_timer = null
 
 var health = 1000
 var bullet_delay = 0.2
-var dash_delay = 2
+var dash_delay = 3
 const MOVE_SPEED = 150
 
 var double_shot = false
@@ -46,7 +46,7 @@ func _physics_process(delta):
 		move_vec.y += 1.5
 	if Input.is_action_pressed("move_up"):
 		move_vec.y -= 1.5
-	move_and_collide(move_vec * delta * MOVE_SPEED)
+	move_and_slide(move_vec * MOVE_SPEED)
 
 func on_shoot_timeout_complete():
 	can_shoot = true
@@ -68,10 +68,9 @@ func _process(delta):
 		shoot_timer.start()
 		
 	if (Input.is_action_just_pressed("dash") && can_dash):
-		$ghost_timer.start()
+		$Particles2D.emitting = true
 		can_dash = false
 		dash(delta)
-		$ghost_timer.stop()
 		dash_timer.start()
 		
 	if (health <= 0):
@@ -90,6 +89,8 @@ func _process(delta):
 		spread_shot = false
 		
 func shoot():
+	$AudioStreamPlayer2D.play()
+	
 	if(double_shot == true):
 		double_shot()
 		
@@ -108,13 +109,13 @@ func shoot():
 func dash(delta):
 	var move_vec = Vector2()
 	if Input.is_action_pressed("move_left"):
-		move_vec.x -= 25
+		move_vec.x -= 50
 	if Input.is_action_pressed("move_right"):
-		move_vec.x += 25
+		move_vec.x += 50
 	if Input.is_action_pressed("move_down"):
-		move_vec.y += 25
+		move_vec.y += 50
 	if Input.is_action_pressed("move_up"):
-		move_vec.y -= 25
+		move_vec.y -= 50
 	move_and_collide(move_vec * delta * MOVE_SPEED)
 	
 func double_shot():

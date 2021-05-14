@@ -6,7 +6,7 @@ var iframe_timer = null
 var ghost_timer = null
 
 var health = 1000
-var bullet_delay = 0.2
+var bullet_delay = 0.1
 var iframe_delay = 2
 const MOVE_SPEED = 150
 
@@ -46,7 +46,7 @@ func _physics_process(delta):
 		move_vec.y += 1.5
 	if Input.is_action_pressed("move_up"):
 		move_vec.y -= 1.5
-	move_and_collide(move_vec * delta * MOVE_SPEED)
+	move_and_slide(move_vec *  MOVE_SPEED)
 
 func on_shoot_timeout_complete():
 	can_shoot = true
@@ -62,16 +62,15 @@ func _on_power_timeout_complete():
 func _process(delta):
 	get_node("/root/Original-Game/Health").set_text(str(health))
 	
-	if (Input.is_action_pressed("shoot") && can_shoot):
+	if (Input.is_action_just_pressed("shoot") && can_shoot):
 		shoot()
 		can_shoot = false
 		shoot_timer.start()
 		
 	if (Input.is_action_just_pressed("dash") && iframe):
-		$ghost_timer.start()
+		$Particles2D.emitting = true
 		iframe = false
-		activate_iframe(delta)
-		$ghost_timer.stop()
+		activate_iframe()
 		iframe_timer.start()
 		
 	if (health <= 0):
@@ -90,6 +89,8 @@ func _process(delta):
 		spread_shot = false
 		
 func shoot():
+	$AudioStreamPlayer2D.play()
+	
 	if(double_shot == true):
 		double_shot()
 		
@@ -105,7 +106,7 @@ func shoot():
 		b.dir = Vector2(0, -10)
 		get_parent().add_child(b) 
 	
-func activate_iframe(delta):
+func activate_iframe():
 	var move_vec = Vector2()
 	if Input.is_action_pressed("move_left"):
 		iframe()
@@ -115,13 +116,13 @@ func activate_iframe(delta):
 		iframe()
 	if Input.is_action_pressed("move_up"):
 		iframe()
-	move_and_collide(move_vec * delta * MOVE_SPEED)
+	move_and_collide(move_vec *  MOVE_SPEED)
 	
 func iframe():
+	can_shoot = false
 	modulate.a = 0.5
 	$iframe_timer.start();
 	$CollisionShape2D.disabled = true
-	can_shoot = false
 
 func _on_iframe_timer_timeout():
 	modulate.a = 1
