@@ -7,7 +7,7 @@ var boss_scene = load("res://Scenes/Boss.tscn")
 var spawn_timer = 2
 
 var count = 30
-var bossCount = 10
+var bossCount = 20
 var can_spawn = true;
 
 func _ready():
@@ -18,7 +18,7 @@ func _on_Timer_timeout():
 	if(count == 0 && !$Area2D.overlaps_body(enemy1_scene.instance()) && !$Area2D.overlaps_body(enemy2_scene.instance())):
 		print("Spawning stopped")
 		
-		for i in range(5):
+		for i in range(20):
 			bossCount = bossCount - 1
 		if(bossCount == 0):
 			print("Spawning boss")
@@ -55,3 +55,9 @@ func _on_Timer_timeout():
 		add_child(enemy1)
 		count = count - 1
 		print(count)
+
+
+func _on_BossTimer_timeout():
+	var boss = boss_scene.instance()
+	boss.position.x = 400
+	add_child(boss)
