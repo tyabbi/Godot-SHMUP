@@ -27,7 +27,7 @@ func _on_Timer_timeout():
 			add_child(boss)
 	elif(count == 10):
 		var enemy2_1 = enemy2_scene.instance()
-		enemy2_1.position.x = 150
+		enemy2_1.position.x = 200
 		add_child(enemy2_1)
 			
 		var enemy2_2 = enemy2_scene.instance()
@@ -35,7 +35,7 @@ func _on_Timer_timeout():
 		add_child(enemy2_2)
 			
 		var enemy2_3 = enemy2_scene.instance()
-		enemy2_3.position.x = 650
+		enemy2_3.position.x = 600
 		add_child(enemy2_3)
 		
 		print("Spawning enemy.")

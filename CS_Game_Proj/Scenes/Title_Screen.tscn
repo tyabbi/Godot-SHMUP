@@ -49,7 +49,7 @@ __meta__ = {
 [node name="OriginalGame" parent="menu/Center_Row/Buttons" instance=ExtResource( 3 )]
 margin_bottom = 60.0
 script = ExtResource( 4 )
-scene_to_load = "res://Scenes/orignal_game.tscn"
+scene_to_load = "res://Scenes/original_game.tscn"
 
 [node name="NewGame" parent="menu/Center_Row/Buttons" instance=ExtResource( 1 )]
 margin_top = 80.0
