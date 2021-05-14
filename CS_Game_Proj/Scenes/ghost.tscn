@@ -4,3 +4,7 @@
 
 [node name="ghost" type="Sprite"]
 script = ExtResource( 1 )
+
+[node name="alpha_tween" type="Tween" parent="."]
+
+[connection signal="tween_completed" from="alpha_tween" to="." method="_on_alpha_tween_tween_completed"]

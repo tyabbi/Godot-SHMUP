@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Sprites/background.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=2]
@@ -13,9 +13,6 @@
 extents = Vector2( 133.93, 404.978 )
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 544.508, 10 )
-
-[sub_resource type="RectangleShape2D" id=3]
 
 [node name="Main-Game" type="Node2D"]
 script = ExtResource( 2 )
@@ -24,7 +21,7 @@ script = ExtResource( 2 )
 offset = Vector2( 1, 0 )
 transform = Transform2D( 1, 0, 0, 1, 1, 0 )
 script = ExtResource( 5 )
-camera_velocity = Vector2( 0, 450 )
+camera_velocity = Vector2( 0, 350 )
 
 [node name="ColorRect" type="ParallaxLayer" parent="ParallaxBackground"]
 position = Vector2( 300, 400 )
@@ -50,21 +47,10 @@ shape = SubResource( 1 )
 position = Vector2( 812, 400 )
 shape = SubResource( 1 )
 
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2( 400, 810 )
-shape = SubResource( 2 )
-
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2( 400, -10 )
-shape = SubResource( 2 )
-one_way_collision = true
-
 [node name="Enemy1Spawn" type="Node2D" parent="."]
 script = ExtResource( 6 )
 
 [node name="Timer" type="Timer" parent="Enemy1Spawn"]
-
-[node name="Timer2" type="Timer" parent="Enemy1Spawn"]
 
 [node name="Area2D" type="Area2D" parent="Enemy1Spawn"]
 gravity = 0.0
@@ -74,7 +60,7 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy1Spawn/Area2D"]
 position = Vector2( 400, 400 )
 scale = Vector2( 40, 40 )
-shape = SubResource( 3 )
+shape = SubResource( 2 )
 disabled = true
 
 [node name="Label" type="Label" parent="."]
@@ -102,6 +88,4 @@ __meta__ = {
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 volume_db = -20.0
 autoplay = true
-
 [connection signal="timeout" from="Enemy1Spawn/Timer" to="Enemy1Spawn" method="_on_Timer_timeout"]
-[connection signal="timeout" from="Enemy1Spawn/Timer2" to="Enemy1Spawn" method="_on_BossTimer_timeout"]
